@@ -29,14 +29,63 @@ class AdminController extends Controller
     public function postAdd(Request $request){
         $request->validate([
             'fullname'=>'required|min:5',
-            'email'=>'requied|email'
+            'email'=>'required|email|unique:users',
+            'phone_number'=>'required|min:8'
+
         ],[
             'fullname.required'=>'Họ và tên bắt buộc',
-            'fullname.min'=>'Họ và tên phải từ:min ký tự trở lên ',
-            'email.requied'=>'Email bắt buộc',
-            'email.email'=>'Email không đúng định dạng'
+            'fullname.min'=>'Họ và tên phải từ :min ký tự trở lên ',
+            'email.required'=>'Email bắt buộc',
+            'email.email'=>'Email không đúng định dạng',
+            'email.unique'=>'Email đã tồn tại',
+            'phone_number.min'=>'Số điện thoại phải từ :min chữ sô'
         ]);    
-        return 'ok';
+        $dataInsert=[
+            $request->fullname,
+            $request->email,
+            $request->phone_number
+        ];
+        $this->users->addUser($dataInsert);
+        return redirect()->route('admin')->with('msg','Thêm người dùng thành công');
+    }
+    public function getEdit($id=0){
+        // return view($this->pathViewController.'.edit');
+        if(!empty($id)){
+            $userDetail=$this->users->getDetail($id);
+            if(!empty($userDetail[0])){
+                $userDetail=$userDetail[0];
+            }
+            else{
+            return redirect()->route('admin')->with('msg','Người dùng không tồn tại');
 
+            }
+        }
+        else{
+            return redirect()->route('admin')->with('msg','Người dùng không tồn tại');
+        }
+        return view($this->pathViewController.'.edit',compact('userDetail'));
+
+    }
+
+    public function postEdit(Request $request,$id=0){
+        $request->validate([
+            'fullname'=>'required|min:5',
+            'email'=>'required|email',
+            'phone_number'=>'required|min:8'
+
+        ],[
+            'fullname.required'=>'Họ và tên bắt buộc',
+            'fullname.min'=>'Họ và tên phải từ :min ký tự trở lên ',
+            'email.required'=>'Email bắt buộc',
+            'email.email'=>'Email không đúng định dạng',
+            'phone_number.min'=>'Số điện thoại phải từ :min chữ sô'
+        ]);    
+        $dataUpdate=[
+            $request->fullname,
+            $request->email,
+            $request->phone_number
+        ];
+        $this->users->updateUser($dataUpdate,$id);
+        return back()->with('msg','Cập nhật người dùng thành công');
     }
 }

@@ -23,8 +23,8 @@
                   </button>
                   <div class="dropdown-menu">
                     <a class="dropdown-item" href="javascript:void(0);">
-                      <i class="fa-solid fa-eye me-1"></i> View</a>
-                    <a class="dropdown-item" href="javascript:void(0);"
+                      <i class="fa-solid fa-eye me-1" ></i> View</a>
+                    <a class="dropdown-item" href="{{route('admin/edit',['id'=>$item->id])}}"
                       ><i class="bx bx-edit-alt me-1"></i> Edit</a>
                   
                     <a class="dropdown-item" href="javascript:void(0);"

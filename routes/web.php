@@ -24,7 +24,11 @@ Route::prefix($prefix)->group(function () use($controllerName){
 
     Route::get('/add',$controller.'add')->name($controllerName.'/add');
 
-    Route::post('/add',$controller.'postAdd')->name($controllerName.'/add');
+    Route::post('/add',$controller.'postAdd')->name($controllerName.'/post/add');
+
+    Route::get('/edit/{id}',$controller.'getEdit')->name($controllerName.'/edit');
+
+    Route::post('/edit/{id}',$controller.'postEdit')->name($controllerName.'/post/edit');
 
     Route::get('/register',$controller.'register')->name($controllerName.'/register');
    
