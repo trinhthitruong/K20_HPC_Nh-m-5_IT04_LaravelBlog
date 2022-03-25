@@ -20,6 +20,12 @@ class AdminController extends Controller
 
         return view($this->pathViewController.'.index',compact('userList'));
     }
+    public function login(){
+
+        
+
+        return view($this->pathViewController.'.login');
+    }
 
     public function add(){
 

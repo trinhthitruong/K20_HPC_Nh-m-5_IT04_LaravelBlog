@@ -16,8 +16,8 @@ class Check
      */
     public function handle(Request $request, Closure $next)
     {
-        if($request->input('admin') == '123'){
-            return redirect('blog');
+        if($request->input('admin') !== '123'){
+            return redirect('blog/login');
         }
         return $next($request);
     }
