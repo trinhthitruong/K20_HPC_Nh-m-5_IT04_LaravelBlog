@@ -36,7 +36,7 @@ class AdminController extends Controller
         $request->validate([
             'fullname'=>'required|min:5',
             'email'=>'required|email|unique:users',
-            'phone_number'=>'required|min:8'
+            'phone_number'=>'required|min:8|max:8'
 
         ],[
             'fullname.required'=>'Họ và tên bắt buộc',
@@ -44,7 +44,8 @@ class AdminController extends Controller
             'email.required'=>'Email bắt buộc',
             'email.email'=>'Email không đúng định dạng',
             'email.unique'=>'Email đã tồn tại',
-            'phone_number.min'=>'Số điện thoại phải từ :min chữ sô'
+            'phone_number.min'=>'Số điện thoại phải :min chữ sô',
+            'phone_number.max'=>'Số điện thoại phải :max chữ sô'
         ]);    
         $dataInsert=[
             $request->fullname,
@@ -117,9 +118,5 @@ class AdminController extends Controller
         return redirect()->route('admin')->with('msg',$msg);;
 
     }
-    public function login(){
-
-        return view($this->pathViewController.'.login');
-
-    }
+    
 }
