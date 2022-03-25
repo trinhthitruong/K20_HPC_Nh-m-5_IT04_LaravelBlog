@@ -1,7 +1,6 @@
 @extends('admin.auth')
 @section('content')
 <div class="container-xxl">
-
     <div class="authentication-wrapper authentication-basic container-p-y">
       <div class="authentication-inner">
         <!-- Register -->
@@ -126,9 +125,6 @@
       </div>
     </div>
   </div>
-
-
-  <!-- / Content -->
 @endsection
 
     
