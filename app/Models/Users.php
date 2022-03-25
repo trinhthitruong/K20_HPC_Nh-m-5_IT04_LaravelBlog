@@ -26,6 +26,6 @@ class Users extends Model
 
     }
     public function deleteUser($id){
-        return DB::delete('DELETE FROM '.$this->table.' WHERE id = ?', [$id]);
+        return DB::delete("DELETE FROM $this->table WHERE id = ?", [$id]);
     }
 }

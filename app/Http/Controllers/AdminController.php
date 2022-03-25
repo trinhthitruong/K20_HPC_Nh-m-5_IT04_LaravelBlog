@@ -88,4 +88,27 @@ class AdminController extends Controller
         $this->users->updateUser($dataUpdate,$id);
         return back()->with('msg','Cập nhật người dùng thành công');
     }
+
+    public function delete($id=0){
+        if(!empty($id)){
+            $userDetail=$this->users->getDetail($id);
+            if(!empty($userDetail[0])){
+                $deleteStatus=$this->users->deleteUser($id);
+                if($deleteStatus){
+                    $msg='Xóa người dùng thành công';
+                }
+                else{
+                    $msg='Bạn không thể xóa người dùng lúc này';
+                }
+            }
+            else{
+                $msg='Người dùng không tồn tại';
+            }
+        }
+        else{
+            $msg='Liên kết không tồn tại';
+        }
+        return redirect()->route('admin')->with('msg',$msg);;
+
+    }
 }
