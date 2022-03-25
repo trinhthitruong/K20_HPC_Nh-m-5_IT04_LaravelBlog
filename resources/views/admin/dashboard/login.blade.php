@@ -1,15 +1,6 @@
-<<<<<<< HEAD
-@extends('admin.validate')
-@section('content')
-        
- <!-- Content -->
-
- <div class="container-xxl">
-=======
 @extends('admin.auth')
 @section('content')
 <div class="container-xxl">
->>>>>>> 7ac52ae1b455ad1dc34de167a4e135a05011a4cb
     <div class="authentication-wrapper authentication-basic container-p-y">
       <div class="authentication-inner">
         <!-- Register -->
@@ -134,9 +125,6 @@
       </div>
     </div>
   </div>
-<<<<<<< HEAD
-
-  <!-- / Content -->
 @endsection
 
     
