@@ -77,14 +77,15 @@ class AdminController extends Controller
         $request->validate([
             'fullname'=>'required|min:5',
             'email'=>'required|email',
-            'phone_number'=>'required|min:8'
+            'phone_number'=>'required|min:9|max:9'
 
         ],[
             'fullname.required'=>'Họ và tên bắt buộc',
             'fullname.min'=>'Họ và tên phải từ :min ký tự trở lên ',
             'email.required'=>'Email bắt buộc',
             'email.email'=>'Email không đúng định dạng',
-            'phone_number.min'=>'Số điện thoại phải từ :min chữ sô'
+            'phone_number.min'=>'Số điện thoại phải :min chữ sô',
+            'phone_number.max'=>'Số điện thoại phải :max chữ sô'
         ]);    
         $dataUpdate=[
             $request->fullname,
@@ -117,9 +118,5 @@ class AdminController extends Controller
         return redirect()->route('admin')->with('msg',$msg);;
 
     }
-    public function login(){
-
-        return view($this->pathViewController.'.login');
-
-    }
+   
 }
