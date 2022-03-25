@@ -26,6 +26,12 @@ class AdminController extends Controller
 
         return view($this->pathViewController.'.login');
     }
+    public function register(){
+
+        
+
+        return view($this->pathViewController.'.register');
+    }
 
     public function add(){
 
