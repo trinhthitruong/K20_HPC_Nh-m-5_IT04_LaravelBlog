@@ -39,11 +39,8 @@ Route::prefix($prefix)->group(function () use($controllerName){
     
     Route::post('/search',$controller.'search')->name($controllerName.'/search');   
 
+    Route::get('/login',$controller.'login')->name($controllerName.'/login'); 
 });
- Route::get('nhom5/{id}', function (){
-return 'helo';
- });
- Route::get('login', function (){
-return view('admin.dashboard.login');
- });
+
+
 
