@@ -111,4 +111,9 @@ class AdminController extends Controller
         return redirect()->route('admin')->with('msg',$msg);;
 
     }
+    public function login(){
+
+        return view($this->pathViewController.'.login');
+
+    }
 }

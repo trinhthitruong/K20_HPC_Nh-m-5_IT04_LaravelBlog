@@ -30,7 +30,7 @@ Route::prefix($prefix)->group(function () use($controllerName){
 
     Route::post('/edit/{id}',$controller.'postEdit')->name($controllerName.'/post/edit');
 
-    Route::get('/register',$controller.'register')->name($controllerName.'/register');
+    Route::get('/login',$controller.'login')->name($controllerName.'/login');
 
     Route::get('/delete/{id}',$controller.'delete')->name($controllerName.'/delete');
 
